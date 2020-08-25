@@ -29,11 +29,12 @@ public class ParkingLot {
     }
 
     public Car pickCar(Ticket ticket){
-        String carNumber = ticket.getCarNumber();
         String parkingSpotId = ticket.getParkingPlace();
         for(ParkingSpot spot: parkedParkingList){
-            if(spot.id.equals(parkingSpotId) && spot.getCarNumber().equals(carNumber)){
-                return spot.getCar();
+            if(spot.id.equals(parkingSpotId)){
+                if(spot.isParked){
+                    return spot.getCar();
+                }
             }
         }
         System.out.println("Invalid Ticket!");

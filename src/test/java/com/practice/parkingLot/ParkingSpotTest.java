@@ -24,5 +24,4 @@ class ParkingSpotTest {
 
         assertEquals(car, newCar);
     }
-
 }

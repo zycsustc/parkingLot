@@ -76,4 +76,16 @@ class ParkingLotTest {
 
         assertNull(parkingLot.pickCar(invalidTicket));
     }
+
+    @Test
+    void shouldFailedTheSecondTimePickingCarGivenSameTicket(){
+        Car myCar = new Car("A11111");
+        ParkingLot parkingLot = new ParkingLot(2);
+
+        Ticket myTicket = parkingLot.park(myCar);
+        Car pickedCar = parkingLot.pickCar(myTicket);
+        Car secondPickedCar = parkingLot.pickCar(myTicket);
+
+        assertNull(secondPickedCar);
+    }
 }
