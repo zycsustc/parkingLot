@@ -66,4 +66,14 @@ class ParkingLotTest {
         assertEquals(myCar, pickedCar);
     }
 
+    @Test
+    void shouldFailedPickingGivenInvalidTicketFromParkingLotWhereMyCarParked(){
+        Car myCar = new Car("A11111");
+        ParkingLot parkingLot = new ParkingLot(2);
+
+        Ticket myTicket = parkingLot.park(myCar);
+        Ticket invalidTicket = new Ticket("Invalid", "WrongNumber");
+
+        assertNull(parkingLot.pickCar(invalidTicket));
+    }
 }

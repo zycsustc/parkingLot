@@ -36,6 +36,7 @@ public class ParkingLot {
                 return spot.getCar();
             }
         }
+        System.out.println("Invalid Ticket!");
         return null;
     }
 }
