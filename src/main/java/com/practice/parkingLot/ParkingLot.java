@@ -8,6 +8,8 @@ public class ParkingLot {
 
     public ParkingLot(){
         this.emptyParkingList.add("A1");
+        this.emptyParkingList.add("A2");
+        this.emptyParkingList.add("A3");
     }
 
     public Ticket park(Car car){
