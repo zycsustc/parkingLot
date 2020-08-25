@@ -42,7 +42,7 @@ class ParkingLotTest {
     }
 
     @Test
-    void shouldReturnMyCarGivenMyTicketInParkingLotWhichOnlyParkedMyCar(){
+    void shouldReturnMyCarGivenMyTicketWhenParkingLotOnlyParkedMyCar(){
         Car myCar = new Car("A11111");
         ParkingLot parkingLot = new ParkingLot(1);
 
@@ -51,4 +51,19 @@ class ParkingLotTest {
 
         assertEquals(myCar, pickedCar);
     }
+
+    @Test
+    void shouldReturnMyCarGivenMyTicketWhenParkingLotParkedManyCarsIncludingMyCar(){
+        Car myCar = new Car("A11111");
+        Car otherCar = new Car("B11111");
+        ParkingLot parkingLot = new ParkingLot(2);
+
+        Ticket myTicket = parkingLot.park(myCar);
+        Ticket otherTicket = parkingLot.park(otherCar);
+
+        Car pickedCar = parkingLot.pickCar(myTicket);
+
+        assertEquals(myCar, pickedCar);
+    }
+
 }
