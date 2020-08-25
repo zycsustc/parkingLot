@@ -1,5 +1,6 @@
 package com.practice.parkingLot;
 
+import com.practice.parkingLot.common.Message;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +14,7 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Ticket ticket = parkingLot.park(car);
 
-        assertEquals(car, ticket.getParkedCar());
+        assertEquals(car.getNumber(), ticket.getCarNumber());
     }
 
     @Test
@@ -25,8 +26,8 @@ class ParkingLotTest {
         Ticket ticket1 = parkingLot.park(car1);
         Ticket ticket2 = parkingLot.park(car2);
 
-        assertEquals(car1, ticket1.getParkedCar());
-        assertEquals(car2, ticket2.getParkedCar());
+        assertEquals(car1.getNumber(), ticket1.getCarNumber());
+        assertEquals(car2.getNumber(), ticket2.getCarNumber());
         assertNotEquals(ticket1.getParkingPlace(), ticket2.getParkingPlace());
     }
 
@@ -40,4 +41,14 @@ class ParkingLotTest {
         assertEquals(message.fullMessage, ticket.getParkingPlace());
     }
 
+    @Test
+    void shouldReturnMyCarGivenMyTicketInParkingLotWhichOnlyParkedMyCar(){
+        Car myCar = new Car("A11111");
+        ParkingLot parkingLot = new ParkingLot(1);
+
+        Ticket ticket = parkingLot.park(myCar);
+        Car pickedCar = parkingLot.pickCar(ticket);
+
+        assertEquals(myCar, pickedCar);
+    }
 }

@@ -9,9 +9,9 @@ class TicketTest {
     void shouldCreateCorrectTicket(){
         Car car = new Car("AB1234");
         String parkingPlace = "A1";
-        Ticket ticket = new Ticket(parkingPlace, car);
+        Ticket ticket = new Ticket(parkingPlace, car.getNumber());
 
-        assertEquals(car, ticket.getParkedCar());
+        assertEquals(car.getNumber(), ticket.getCarNumber());
         assertEquals(parkingPlace, ticket.getParkingPlace());
     }
 }

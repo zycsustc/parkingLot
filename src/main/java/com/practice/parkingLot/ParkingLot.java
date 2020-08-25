@@ -1,27 +1,41 @@
 package com.practice.parkingLot;
 
+import com.practice.parkingLot.common.Message;
+
 import java.util.ArrayList;
 
 public class ParkingLot {
-    private ArrayList<String> emptyParkingList = new ArrayList<>();
-    private ArrayList<String> parkedParkingList = new ArrayList<>();
+    private ArrayList<ParkingSpot> emptyParkingList = new ArrayList<>();
+    private ArrayList<ParkingSpot> parkedParkingList = new ArrayList<>();
     private Message message = new Message();
 
     public ParkingLot(int number){
         for(int i=0;i<number;i++){
-            this.emptyParkingList.add("A"+i+1);
+            this.emptyParkingList.add(new ParkingSpot("A"+i+1));
         }
     }
 
     public Ticket park(Car car){
-        String parkingPlace;
+        ParkingSpot parkingSpot;
         if(emptyParkingList.size()>0){
-            parkingPlace = emptyParkingList.get(0);
-            parkedParkingList.add(parkingPlace);
+            parkingSpot = emptyParkingList.get(0);
+            parkingSpot.parkCar(car);
+            parkedParkingList.add(parkingSpot);
             emptyParkingList.remove(0);
         }else {
-            parkingPlace = message.fullMessage;
+            parkingSpot = new ParkingSpot(message.fullMessage);
         }
-        return new Ticket(parkingPlace, car);
+        return new Ticket(parkingSpot.id, car.getNumber());
+    }
+
+    public Car pickCar(Ticket ticket){
+        String carNumber = ticket.getCarNumber();
+        String parkingSpotId = ticket.getParkingPlace();
+        for(ParkingSpot spot: parkedParkingList){
+            if(spot.id.equals(parkingSpotId) && spot.getCarNumber().equals(carNumber)){
+                return spot.getCar();
+            }
+        }
+        return null;
     }
 }
