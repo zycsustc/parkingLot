@@ -9,9 +9,9 @@ public class ParkingLot {
     public ArrayList<ParkingSpot> parkedParkingList = new ArrayList<>();
     private Message message = new Message();
 
-    public ParkingLot(int number){
+    public ParkingLot(int number, String name){
         for(int i=0;i<number;i++){
-            this.emptyParkingList.add(new ParkingSpot("A"+i+1));
+            this.emptyParkingList.add(new ParkingSpot(name+i));
         }
     }
 

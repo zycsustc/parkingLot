@@ -13,7 +13,7 @@ class ParkingBoyTest {
     @Test
     void shouldParkCarGivenOneParkingLot(){
         ArrayList<ParkingLot> parkingLots = new ArrayList<>();
-        parkingLots.add(new ParkingLot(1));
+        parkingLots.add(new ParkingLot(1, "A"));
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car firstCar = new Car("A11111");
         Car secondCar = new Car("B11111");
@@ -26,7 +26,7 @@ class ParkingBoyTest {
     @Test
     void shouldPickUpCarGivenOneParkingLot(){
         ArrayList<ParkingLot> parkingLots = new ArrayList<>();
-        parkingLots.add(new ParkingLot(2));
+        parkingLots.add(new ParkingLot(2, "A"));
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car myCar = new Car("A11111");
         Ticket ticket = parkingBoy.park(myCar);
