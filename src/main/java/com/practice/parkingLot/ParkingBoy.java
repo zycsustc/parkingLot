@@ -13,12 +13,17 @@ public class ParkingBoy {
     }
     
     public Ticket park(Car car){
+        int maxEmptyIndex = 0;
         for (ParkingLot parkingLot: parkingLots){
-            if(parkingLot.emptyParkingList.size()>0){
-                return parkingLot.park(car);
+            if(parkingLot.emptyParkingList.size()>parkingLots.get(maxEmptyIndex).emptyParkingList.size()){
+                maxEmptyIndex = parkingLots.indexOf(parkingLot);
             }
         }
-        return new Ticket(message.fullMessage, car.getNumber());
+        if(parkingLots.get(maxEmptyIndex).emptyParkingList.size()>0){
+            return parkingLots.get(maxEmptyIndex).park(car);
+        } else {
+            return new Ticket(message.fullMessage, car.getNumber());
+        }
     }
     
     public Car pickUp(Ticket ticket){

@@ -35,4 +35,17 @@ class ParkingBoyTest {
         Car pickedUpSecondCar = parkingBoy.pickUp(ticket);
         assertEquals(null, pickedUpSecondCar);
     }
+
+    @Test
+    void shouldParkCarToTheParkingLotWithMostEmptyParkingSpotsGivenMultiPleParkingLots(){
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(1, "A"));
+        parkingLots.add(new ParkingLot(2, "B"));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car myCar = new Car("A11111");
+
+        Ticket ticket = parkingBoy.park(myCar);
+
+        assertEquals("B:0", ticket.getParkingPlace());
+    }
 }
