@@ -92,4 +92,17 @@ class ParkingBoyTest {
         assertNull(parkingBoy.pickUp(invalidParkingSpotTicket));
         assertNull(parkingBoy.pickUp(invalidCarNumberTicket));
     }
+
+    @Test
+    void shouldSuccessfullyPickUpCarGivenValidTicketAndTheCarIsParkedInParkingLots(){
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(2, "A"));
+        parkingLots.add(new ParkingLot(2, "B"));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car myCar = new Car("A11111");
+
+        Ticket ticket = parkingBoy.park(myCar);
+
+        assertEquals(myCar, parkingBoy.pickUp(ticket));
+    }
 }
