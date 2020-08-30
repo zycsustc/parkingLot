@@ -35,5 +35,4 @@ class ParkingBoyTest {
         Car pickedUpSecondCar = parkingBoy.pickUp(ticket);
         assertEquals(null, pickedUpSecondCar);
     }
-
 }

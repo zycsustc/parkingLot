@@ -5,13 +5,15 @@ import com.practice.parkingLot.common.Message;
 import java.util.ArrayList;
 
 public class ParkingLot {
+    public String name;
     public ArrayList<ParkingSpot> emptyParkingList = new ArrayList<>();
     public ArrayList<ParkingSpot> parkedParkingList = new ArrayList<>();
     private Message message = new Message();
 
     public ParkingLot(int number, String name){
+        this.name = name;
         for(int i=0;i<number;i++){
-            this.emptyParkingList.add(new ParkingSpot(name+i));
+            this.emptyParkingList.add(new ParkingSpot(String.valueOf(i)));
         }
     }
 
@@ -22,14 +24,17 @@ public class ParkingLot {
             parkingSpot.parkCar(car);
             parkedParkingList.add(parkingSpot);
             emptyParkingList.remove(0);
+            return new Ticket(this.name+":"+parkingSpot.id, car.getNumber());
         }else {
-            parkingSpot = new ParkingSpot(message.fullMessage);
+            return new Ticket(message.fullMessage, car.getNumber());
         }
-        return new Ticket(parkingSpot.id, car.getNumber());
     }
 
     public Car pickCar(Ticket ticket){
-        String parkingSpotId = ticket.getParkingPlace();
+        if(ticket.getParkingPlace().split(":").length!=2){
+            return null;
+        }
+        String parkingSpotId = ticket.getParkingPlace().split(":")[1];
         for(ParkingSpot spot: parkedParkingList){
             if(spot.id.equals(parkingSpotId)){
                 if(spot.isParked){

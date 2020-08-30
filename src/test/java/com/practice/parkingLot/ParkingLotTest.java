@@ -48,7 +48,6 @@ class ParkingLotTest {
 
         Ticket ticket = parkingLot.park(myCar);
         Car pickedCar = parkingLot.pickCar(ticket);
-
         assertEquals(myCar, pickedCar);
     }
 
