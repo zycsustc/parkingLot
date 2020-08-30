@@ -19,6 +19,6 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Car" + this.carNumber + "parked at" + this.parkingSpotId;
+        return "Car " + this.carNumber + " parked at " + this.parkingSpotId;
     }
 }

@@ -18,7 +18,7 @@ class ParkingBoyTest {
         Car firstCar = new Car("A11111");
         Car secondCar = new Car("B11111");
         Ticket ticket = parkingBoy.park(firstCar);
-        assertEquals(firstCar, ticket);
+        assertEquals(firstCar.getNumber(), ticket.getCarNumber());
         Ticket secondTicket = parkingBoy.park(secondCar);
         assertEquals(secondTicket.getParkingSpotId(), message.fullMessage);
     }
@@ -74,5 +74,22 @@ class ParkingBoyTest {
         Ticket ticket = parkingBoy.park(new Car("A33333"));
 
         assertEquals(message.fullMessage, ticket.getParkingSpotId());
+    }
+
+    @Test
+    void shouldFailOnPickingUpCarGivenInvalidTicket(){
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(1, "A"));
+        parkingLots.add(new ParkingLot(1, "B"));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+        parkingBoy.park(new Car("A11111"));
+        parkingBoy.park(new Car("B11111"));
+
+        Ticket invalidParkingSpotTicket = new Ticket("Invalid", "A11111");
+        Ticket invalidCarNumberTicket = new Ticket("A:0", "Invalid");
+
+        assertNull(parkingBoy.pickUp(invalidParkingSpotTicket));
+        assertNull(parkingBoy.pickUp(invalidCarNumberTicket));
     }
 }

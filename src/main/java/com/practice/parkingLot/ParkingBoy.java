@@ -27,12 +27,12 @@ public class ParkingBoy {
     }
     
     public Car pickUp(Ticket ticket){
-        String parkingSpotId = ticket.getParkingSpotId();
+        if(ticket.getParkingSpotId().split(":").length!=2){
+            return null;
+        }
         for (ParkingLot parkingLot: parkingLots){
-            for (ParkingSpot parkingSpot: parkingLot.parkedParkingList){
-                if(parkingSpot.id.equals(parkingSpotId)){
-                    return parkingLot.pickCar(ticket);
-                }
+            if(ticket.getParkingSpotId().split(":")[0].equals(parkingLot.name)){
+                return parkingLot.pickCar(ticket);
             }
         }
         return null;

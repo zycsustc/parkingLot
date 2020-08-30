@@ -37,8 +37,10 @@ public class ParkingLot {
         String parkingSpotId = ticket.getParkingSpotId().split(":")[1];
         for(ParkingSpot spot: parkedParkingList){
             if(spot.id.equals(parkingSpotId)){
-                if(spot.isParked){
+                if(spot.isParked && spot.getCarNumber().equals(ticket.getCarNumber())){
                     return spot.getCar();
+                } else {
+                    System.out.println("No car parked at the spot!");
                 }
             }
         }
