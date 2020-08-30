@@ -61,4 +61,18 @@ class ParkingBoyTest {
 
         assertEquals("A:0", ticket.getParkingPlace());
     }
+
+    @Test
+    void shouldFailOnParkingGivenMultipleFullFilledParkingLots(){
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(1, "A"));
+        parkingLots.add(new ParkingLot(1, "B"));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+        parkingBoy.park(new Car("A11111"));
+        parkingBoy.park(new Car("A22222"));
+        Ticket ticket = parkingBoy.park(new Car("A33333"));
+
+        assertEquals(message.fullMessage, ticket.getParkingPlace());
+    }
 }
