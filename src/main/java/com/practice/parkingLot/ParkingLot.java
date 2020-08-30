@@ -5,8 +5,8 @@ import com.practice.parkingLot.common.Message;
 import java.util.ArrayList;
 
 public class ParkingLot {
-    private ArrayList<ParkingSpot> emptyParkingList = new ArrayList<>();
-    private ArrayList<ParkingSpot> parkedParkingList = new ArrayList<>();
+    public ArrayList<ParkingSpot> emptyParkingList = new ArrayList<>();
+    public ArrayList<ParkingSpot> parkedParkingList = new ArrayList<>();
     private Message message = new Message();
 
     public ParkingLot(int number){
