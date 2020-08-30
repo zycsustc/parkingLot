@@ -1,16 +1,16 @@
 package com.practice.parkingLot;
 
 public class Ticket {
-    private String parkingPlace;
+    private String parkingSpotId;
     private String carNumber;
 
-    public Ticket(String parkingPlace, String carNumber) {
-        this.parkingPlace = parkingPlace;
+    public Ticket(String parkingSpotId, String carNumber) {
+        this.parkingSpotId = parkingSpotId;
         this.carNumber = carNumber;
     }
 
-    public String getParkingPlace() {
-        return this.parkingPlace;
+    public String getParkingSpotId() {
+        return this.parkingSpotId;
     }
 
     public String getCarNumber() {
@@ -19,6 +19,6 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Car" + this.carNumber + "parked at" + this.parkingPlace;
+        return "Car" + this.carNumber + "parked at" + this.parkingSpotId;
     }
 }

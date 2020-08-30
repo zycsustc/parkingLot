@@ -31,10 +31,10 @@ public class ParkingLot {
     }
 
     public Car pickCar(Ticket ticket){
-        if(ticket.getParkingPlace().split(":").length!=2){
+        if(ticket.getParkingSpotId().split(":").length!=2){
             return null;
         }
-        String parkingSpotId = ticket.getParkingPlace().split(":")[1];
+        String parkingSpotId = ticket.getParkingSpotId().split(":")[1];
         for(ParkingSpot spot: parkedParkingList){
             if(spot.id.equals(parkingSpotId)){
                 if(spot.isParked){

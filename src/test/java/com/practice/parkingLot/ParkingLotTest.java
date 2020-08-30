@@ -9,7 +9,7 @@ class ParkingLotTest {
     Message message = new Message();
 
     @Test
-    void shouldReturnTicketWhenOnlyOneEmptyParkingPlace(){
+    void shouldReturnTicketWhenOnlyOneEmptyParkingSpot(){
         Car car = new Car("AB1234");
         ParkingLot parkingLot = new ParkingLot(1, "A");
         Ticket ticket = parkingLot.park(car);
@@ -18,7 +18,7 @@ class ParkingLotTest {
     }
 
     @Test
-    void shouldReturnMultiTicketsWhenHavingMultiParkingPlaces(){
+    void shouldReturnMultiTicketsWhenHavingMultiParkingSpots(){
         Car car1 = new Car("A11111");
         Car car2 = new Car("B11111");
         ParkingLot parkingLot = new ParkingLot(2, "A");
@@ -28,7 +28,7 @@ class ParkingLotTest {
 
         assertEquals(car1.getNumber(), ticket1.getCarNumber());
         assertEquals(car2.getNumber(), ticket2.getCarNumber());
-        assertNotEquals(ticket1.getParkingPlace(), ticket2.getParkingPlace());
+        assertNotEquals(ticket1.getParkingSpotId(), ticket2.getParkingSpotId());
     }
 
     @Test
@@ -38,7 +38,7 @@ class ParkingLotTest {
 
         Ticket ticket = parkingLot.park(car);
 
-        assertEquals(message.fullMessage, ticket.getParkingPlace());
+        assertEquals(message.fullMessage, ticket.getParkingSpotId());
     }
 
     @Test

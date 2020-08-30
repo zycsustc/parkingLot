@@ -20,7 +20,7 @@ class ParkingBoyTest {
         Ticket ticket = parkingBoy.park(firstCar);
         assertEquals(firstCar, ticket);
         Ticket secondTicket = parkingBoy.park(secondCar);
-        assertEquals(secondTicket.getParkingPlace(), message.fullMessage);
+        assertEquals(secondTicket.getParkingSpotId(), message.fullMessage);
     }
 
     @Test
@@ -46,7 +46,7 @@ class ParkingBoyTest {
 
         Ticket ticket = parkingBoy.park(myCar);
 
-        assertEquals("B:0", ticket.getParkingPlace());
+        assertEquals("B:0", ticket.getParkingSpotId());
     }
 
     @Test
@@ -59,7 +59,7 @@ class ParkingBoyTest {
 
         Ticket ticket = parkingBoy.park(myCar);
 
-        assertEquals("A:0", ticket.getParkingPlace());
+        assertEquals("A:0", ticket.getParkingSpotId());
     }
 
     @Test
@@ -73,6 +73,6 @@ class ParkingBoyTest {
         parkingBoy.park(new Car("A22222"));
         Ticket ticket = parkingBoy.park(new Car("A33333"));
 
-        assertEquals(message.fullMessage, ticket.getParkingPlace());
+        assertEquals(message.fullMessage, ticket.getParkingSpotId());
     }
 }

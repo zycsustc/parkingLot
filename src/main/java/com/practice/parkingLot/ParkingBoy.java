@@ -27,7 +27,7 @@ public class ParkingBoy {
     }
     
     public Car pickUp(Ticket ticket){
-        String parkingSpotId = ticket.getParkingPlace();
+        String parkingSpotId = ticket.getParkingSpotId();
         for (ParkingLot parkingLot: parkingLots){
             for (ParkingSpot parkingSpot: parkingLot.parkedParkingList){
                 if(parkingSpot.id.equals(parkingSpotId)){
