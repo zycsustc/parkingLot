@@ -48,4 +48,17 @@ class ParkingBoyTest {
 
         assertEquals("B:0", ticket.getParkingPlace());
     }
+
+    @Test
+    void shouldParkCarToTheFirstAvailableParkingLotGivenMultipleParkingLotsWithSameNumberOfEmptySpots(){
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(2, "A"));
+        parkingLots.add(new ParkingLot(2, "B"));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car myCar = new Car("A11111");
+
+        Ticket ticket = parkingBoy.park(myCar);
+
+        assertEquals("A:0", ticket.getParkingPlace());
+    }
 }
