@@ -105,4 +105,19 @@ class ParkingBoyTest {
 
         assertEquals(myCar, parkingBoy.pickUp(ticket));
     }
+
+    @Test
+    void shouldFailOnPickUpTheSameCarWithTicketTwice(){
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(2, "A"));
+        parkingLots.add(new ParkingLot(2, "B"));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car myCar = new Car("A11111");
+
+        Ticket ticket = parkingBoy.park(myCar);
+        Car pickedUpCar = parkingBoy.pickUp(ticket);
+        Car secondPickedUpCar = parkingBoy.pickUp(ticket);
+
+        assertNull(secondPickedUpCar);
+    }
 }
