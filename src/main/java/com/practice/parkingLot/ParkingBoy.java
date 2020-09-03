@@ -13,14 +13,14 @@ public class ParkingBoy {
     }
     
     public Ticket park(Car car){
-        int maxEmptyIndex = 0;
+        int maxVacancyRateIndex = 0;
         for (ParkingLot parkingLot: parkingLots){
-            if(parkingLot.emptyParkingList.size()>parkingLots.get(maxEmptyIndex).emptyParkingList.size()){
-                maxEmptyIndex = parkingLots.indexOf(parkingLot);
+            if(getVacancyRate(parkingLot)>getVacancyRate(parkingLots.get(maxVacancyRateIndex))){
+                maxVacancyRateIndex = parkingLots.indexOf(parkingLot);
             }
         }
-        if(parkingLots.get(maxEmptyIndex).emptyParkingList.size()>0){
-            return parkingLots.get(maxEmptyIndex).park(car);
+        if(parkingLots.get(maxVacancyRateIndex).emptyParkingList.size()>0){
+            return parkingLots.get(maxVacancyRateIndex).park(car);
         } else {
             return new Ticket(message.fullMessage, car.getNumber());
         }
@@ -36,5 +36,11 @@ public class ParkingBoy {
             }
         }
         return null;
+    }
+
+    private float getVacancyRate(ParkingLot parkingLot){
+        int totalNumberOfParkingSpots = parkingLot.emptyParkingList.size()+parkingLot.parkedParkingList.size();
+        int numberOfEmptyParkingSpots = parkingLot.emptyParkingList.size();
+        return (float) numberOfEmptyParkingSpots/totalNumberOfParkingSpots;
     }
 }
