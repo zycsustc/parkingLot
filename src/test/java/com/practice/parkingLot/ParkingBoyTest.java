@@ -56,7 +56,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void shouldParkCarToTheFirstAvailableParkingLotGivenMultipleParkingLotsWithSameNumberOfEmptySpots(){
+    void shouldParkCarToTheFirstAvailableParkingLotGivenMultipleParkingLotsWithSameVacancyRate(){
         ArrayList<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(2, "A"));
         parkingLots.add(new ParkingLot(2, "B"));
