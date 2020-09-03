@@ -32,6 +32,7 @@ public class ParkingLot {
 
     public Car pickCar(Ticket ticket){
         if(ticket.getParkingSpotId().split(":").length!=2){
+            System.out.println("Invalid Ticket!");
             return null;
         }
         String parkingSpotId = ticket.getParkingSpotId().split(":")[1];
